@@ -1,0 +1,429 @@
+/* EasyPay Kiosk - Touch Screen Optimized Styles */
+/* Designed for 27" 1920x1080 displays */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --primary-color: #0066CC;
+  --primary-dark: #004C99;
+  --secondary-color: #28A745;
+  --danger-color: #DC3545;
+  --warning-color: #FFC107;
+  --background: #F5F7FA;
+  --card-background: #FFFFFF;
+  --text-primary: #212529;
+  --text-secondary: #6C757D;
+  --border-color: #DEE2E6;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--background);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Touch-friendly buttons */
+.btn {
+  padding: 20px 40px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 80px;
+  min-width: 200px;
+  box-shadow: var(--shadow);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  touch-action: manipulation;
+}
+
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-success {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--text-secondary);
+  color: white;
+}
+
+.btn-large {
+  padding: 30px 60px;
+  font-size: 1.8rem;
+  min-height: 120px;
+  min-width: 300px;
+}
+
+/* Input fields - touch optimized */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: white;
+  transition: border-color 0.2s ease;
+  min-height: 70px;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Cards */
+.card {
+  background: var(--card-background);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.card-large {
+  padding: 50px;
+}
+
+/* Screen layouts */
+.screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.screen-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.screen-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Main Menu Grid */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 20px;
+}
+
+.menu-item {
+  background: var(--card-background);
+  border-radius: 20px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  min-height: 300px;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.menu-item:active {
+  transform: translateY(-2px);
+}
+
+.menu-icon {
+  font-size: 5rem;
+}
+
+.menu-label {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Balance display */
+.balance-display {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.balance-label {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.balance-amount {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Keypad for PIN entry */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.keypad-btn {
+  aspect-ratio: 1;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  box-shadow: var(--shadow);
+}
+
+.keypad-btn:active {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(0.95);
+}
+
+/* PIN Display */
+.pin-display {
+  text-align: center;
+  padding: 25px;
+  font-size: 3rem;
+  letter-spacing: 15px;
+  background: white;
+  border: 3px solid var(--primary-color);
+  border-radius: 12px;
+  margin: 30px auto;
+  max-width: 400px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Transaction list */
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.transaction-item {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-info {
+  flex: 1;
+}
+
+.transaction-type {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.transaction-date {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.transaction-amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.amount-positive {
+  color: var(--secondary-color);
+}
+
+.amount-negative {
+  color: var(--danger-color);
+}
+
+/* Loading states */
+.loading-spinner {
+  width: 100px;
+  height: 100px;
+  border: 8px solid var(--border-color);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 50px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Webcam container for face recognition */
+.webcam-container {
+  position: relative;
+  max-width: 640px;
+  margin: 30px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.webcam-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 4px solid var(--primary-color);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+/* Alert messages */
+.alert {
+  padding: 20px 30px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.alert-success {
+  background: #D4EDDA;
+  color: #155724;
+  border: 2px solid #C3E6CB;
+}
+
+.alert-error {
+  background: #F8D7DA;
+  color: #721C24;
+  border: 2px solid #F5C6CB;
+}
+
+.alert-info {
+  background: #D1ECF1;
+  color: #0C5460;
+  border: 2px solid #BEE5EB;
+}
+
+/* Responsive - Tablet landscape fallback */
+@media (max-width: 1366px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000000;
+  }
+  
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Print styles */
+@media print {
+  .screen {
+    padding: 20px;
+  }
+  
+  .btn {
+    display: none;
+  }
+}
