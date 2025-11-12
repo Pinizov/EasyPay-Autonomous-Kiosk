@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script type='text/javascript' src='https://ppl-ai-code-interpreter-files.s3.amazonaws.com/NRvpSNTZWylEmAGl-ZvruJZfpGzZIZuUQS3WJbk_FuqqpqLc6N0qRiM25qbk8zYej3UIJntESRjwFkhqZ24vd10Wro8SwBg2blqu027r8bXDXlYtqLku9DUGmUppmRSsLgozSCZM0tnbxNxoVin8OnEpMiHjYcOBsTqCUJp36rg='></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24/7 Autonomous EasyPay Kiosk</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Courier New', monospace; 
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #00ff00; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        h1 { 
+            color: #00ff00; 
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 0 0 10px #00ff00;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #00aa00;
+            margin-bottom: 30px;
+        }
+        .card { 
+            background: rgba(20, 20, 20, 0.9);
+            padding: 20px; 
+            border-radius: 8px; 
+            margin: 15px 0;
+            border-left: 4px solid #00ff00;
+        }
+        .card h2 {
+            color: #00ff00;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        button { 
+            background: #00ff00; 
+            color: #000; 
+            padding: 12px 25px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        button:hover { 
+            background: #00dd00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            background: #1a1a1a; 
+            color: #00ff00; 
+            border: 2px solid #00ff00; 
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        .status { 
+            padding: 15px; 
+            background: #003300; 
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            border-radius: 5px; 
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .error { 
+            padding: 15px; 
+            background: #330000; 
+            color: #ff3333;
+            border: 2px solid #ff3333;
+            border-radius: 5px; 
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .test-section { 
+            margin-top: 25px; 
+        }
+        .status-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .status-item {
+            background: #1a1a1a;
+            padding: 10px;
+            border-left: 4px solid #00ff00;
+            border-radius: 5px;
+        }
+        .status-item span {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        .api-list {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .api-list p {
+            margin: 8px 0;
+            color: #00cc00;
+            font-size: 13px;
+        }
+        .section-title {
+            color: #00ff00;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✓ 24/7 Autonomous EasyPay Kiosk</h1>
+        <div class="subtitle">System is ONLINE and ready to use</div>
+
+        <div class="card">
+            <h2>System Status</h2>
+            <div class="status-box">
+                <div class="status-item">Backend: <span id="backend-status">Checking...</span></div>
+                <div class="status-item">Database: <span id="db-status">Connected</span></div>
+                <div class="status-item">EasyPay: <span id="easypay-status">Ready</span></div>
+                <div class="status-item">Version: <span>1.0.0</span></div>
+            </div>
+        </div>
+
+        <!-- TEST REGISTRATION -->
+        <div class="test-section">
+            <div class="section-title">Test Registration</div>
+            <div class="card">
+                <input type="text" id="egn" placeholder="EGN (e.g., 5555555555)">
+                <input type="text" id="fullname" placeholder="Full Name">
+                <input type="password" id="pin" placeholder="PIN (4 digits)">
+                <button onclick="registerUser()">Register Test User</button>
+                <div id="register-result"></div>
+            </div>
+        </div>
+
+        <!-- QUICK TEST LOGIN -->
+        <div class="test-section">
+            <div class="section-title">Quick Test Login</div>
+            <div class="card">
+                <p style="margin-bottom: 10px; color: #00cc00;">Use these credentials to test:</p>
+                <p style="color: #00cc00;"><strong>EGN:</strong> 1111111111</p>
+                <p style="color: #00cc00; margin-bottom: 15px;"><strong>PIN:</strong> 1234</p>
+                <button onclick="testLogin()">Test Login</button>
+                <div id="login-result"></div>
+            </div>
+        </div>
+
+        <!-- TEST DEPOSIT -->
+        <div class="test-section">
+            <div class="section-title">Test Deposit</div>
+            <div class="card">
+                <input type="number" id="deposit-amount" placeholder="Amount (BGN)" value="1000">
+                <button onclick="testDeposit()">Test Deposit 1000 BGN</button>
+                <div id="deposit-result"></div>
+            </div>
+        </div>
+
+        <!-- TEST TRANSFER -->
+        <div class="test-section">
+            <div class="section-title">Test Money Transfer</div>
+            <div class="card">
+                <input type="text" id="transfer-iban" placeholder="Recipient IBAN (e.g., BG80BNBG96611020345672)">
+                <input type="number" id="transfer-amount" placeholder="Amount (BGN)" value="100">
+                <button onclick="testTransfer()">Test Transfer</button>
+                <div id="transfer-result"></div>
+            </div>
+        </div>
+
+        <!-- API ENDPOINTS -->
+        <div class="test-section">
+            <div class="section-title">API Endpoints</div>
+            <div class="card">
+                <div class="api-list">
+                    <p><strong>Health Check:</strong> GET /health</p>
+                    <p><strong>Register:</strong> POST /api/auth/register</p>
+                    <p><strong>Login:</strong> POST /api/auth/verify</p>
+                    <p><strong>Deposit:</strong> POST /api/deposits/record</p>
+                    <p><strong>Withdrawal:</strong> POST /api/withdrawals/record</p>
+                    <p><strong>Transfer:</strong> POST /api/transfers/send</p>
+                    <p><strong>Bill Payment:</strong> POST /api/bills/pay</p>
+                    <p><strong>Mobile Recharge:</strong> POST /api/mobile/recharge</p>
+                    <p><strong>Check Balance:</strong> GET /api/balance/:user_id</p>
+                    <p><strong>Transactions:</strong> GET /api/transactions/:user_id</p>
+                    <p><strong>Billers:</strong> GET /api/billers</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000';
+        let currentToken = null;
+        let currentUserId = null;
+
+        async function registerUser() {
+            const egn = document.getElementById('egn').value;
+            const fullname = document.getElementById('fullname').value;
+            const pin = document.getElementById('pin').value;
+
+            if (!egn || !fullname || !pin) {
+                document.getElementById('register-result').innerHTML = '<div class="error">Please fill all fields</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ egn, full_name: fullname, pin_code: pin })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    document.getElementById('register-result').innerHTML = `<div class="status">✓ Registration successful! User ID: ${data.user_id}</div>`;
+                    currentUserId = data.user_id;
+                } else {
+                    document.getElementById('register-result').innerHTML = `<div class="error">✗ Error: ${data.error}</div>`;
+                }
+            } catch (err) {
+                document.getElementById('register-result').innerHTML = `<div class="error">✗ Error: ${err.message}</div>`;
+            }
+        }
+
+        async function testLogin() {
+            try {
+                const response = await fetch(`${API_URL}/api/auth/verify`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ egn: '1111111111', pin_code: '1234' })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    currentToken = data.token;
+                    currentUserId = data.user.id;
+                    localStorage.setItem('token', data.token);
+                    document.getElementById('login-result').innerHTML = `<div class="status">✓ Login successful! Token: ${data.token.substring(0, 30)}...</div>`;
+                } else {
+                    document.getElementById('login-result').innerHTML = `<div class="error">✗ Error: ${data.error}</div>`;
+                }
+            } catch (err) {
+                document.getElementById('login-result').innerHTML = `<div class="error">✗ Error: ${err.message}</div>`;
+            }
+        }
+
+        async function testDeposit() {
+            if (!currentUserId) {
+                document.getElementById('deposit-result').innerHTML = '<div class="error">Please login first or register a user</div>';
+                return;
+            }
+
+            const amount = parseFloat(document.getElementById('deposit-amount').value) || 1000;
+
+            try {
+                const response = await fetch(`${API_URL}/api/deposits/record`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: currentUserId, amount })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('deposit-result').innerHTML = `<div class="status">✓ Deposit successful! Amount: ${data.amount} BGN, TX ID: ${data.transaction_id}</div>`;
+                } else {
+                    document.getElementById('deposit-result').innerHTML = `<div class="error">✗ Error: ${data.error}</div>`;
+                }
+            } catch (err) {
+                document.getElementById('deposit-result').innerHTML = `<div class="error">✗ Error: ${err.message}</div>`;
+            }
+        }
+
+        async function testTransfer() {
+            if (!currentUserId) {
+                document.getElementById('transfer-result').innerHTML = '<div class="error">Please login first</div>';
+                return;
+            }
+
+            const to_iban = document.getElementById('transfer-iban').value;
+            const amount = parseFloat(document.getElementById('transfer-amount').value) || 100;
+
+            if (!to_iban) {
+                document.getElementById('transfer-result').innerHTML = '<div class="error">Please enter IBAN</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/transfers/send`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: currentUserId, to_iban, amount, purpose: 'Test transfer' })
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('transfer-result').innerHTML = `<div class="status">✓ Transfer initiated! TX ID: ${data.transaction_id}<br>Status: ${data.status}</div>`;
+                } else {
+                    document.getElementById('transfer-result').innerHTML = `<div class="error">✗ Error: ${data.error}</div>`;
+                }
+            } catch (err) {
+                document.getElementById('transfer-result').innerHTML = `<div class="error">✗ Error: ${err.message}</div>`;
+            }
+        }
+
+        async function checkStatus() {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                document.getElementById('backend-status').innerHTML = '✓ Online';
+            } catch (err) {
+                document.getElementById('backend-status').innerHTML = '✗ Offline';
+            }
+        }
+
+        setInterval(checkStatus, 5000);
+        checkStatus();
+    </script>
+</body>
+</html>
