@@ -1,0 +1,57 @@
+# Production override for Docker Compose
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml --profile production up -d
+
+services:
+  postgres:
+    # Do not publish database port in production (reachable only on the internal network)
+    ports: []
+    # Optional resource limits
+    mem_limit: 512m
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  redis:
+    ports: []
+    mem_limit: 256m
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  ai_service:
+    # No published ports; use internal networking
+    ports: []
+    expose:
+      - "8000"
+    mem_limit: 1g
+    cpus: "1.0"
+
+  backend:
+    # Do not publish backend directly on the host; expose internally for nginx
+    ports: []
+    expose:
+      - "5000"
+    mem_limit: 1g
+    cpus: "1.0"
+
+  frontend:
+    # Frontend also not published; nginx will serve to the Internet
+    ports: []
+    expose:
+      - "8080"
+    mem_limit: 256m
+    cpus: "0.5"
+
+  nginx:
+    # Only nginx is published externally
+    ports:
+      - "80:80"
+      - "443:443"
+    mem_limit: 256m
+    cpus: "0.5"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
