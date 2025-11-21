@@ -174,6 +174,13 @@ docker-compose logs -f
 **Health**: `curl http://localhost:5000/health`  
 **Database Backup**: `docker exec easypay_postgres pg_dump`
 
+## 📚 Documentation
+
+- [REPOSITORY_MANAGEMENT.md](REPOSITORY_MANAGEMENT.md) - Guide for managing and deleting GitHub repositories
+- [TESTING.md](TESTING.md) - Comprehensive testing guide
+- [PRODUCTION.md](PRODUCTION.md) - Production deployment guide
+- [DEPLOYMENT-READY.md](DEPLOYMENT-READY.md) - Quick deployment checklist
+
 ## 📄 License
 
 MIT License
