@@ -7,6 +7,10 @@ This guide explains how to manage GitHub repositories, including how to delete t
 - [Before Deleting](#before-deleting)
 - [Alternative Options](#alternative-options)
 - [Recovery Options](#recovery-options)
+- [FAQ](#faq)
+- [Best Practices](#best-practices)
+- [Resources](#resources)
+- [Need Help](#need-help)
 
 ---
 
@@ -63,8 +67,9 @@ gh repo delete USERNAME/REPOSITORY-NAME --yes
 Using curl or any HTTP client:
 
 ```bash
-# Set token securely (recommended: use environment variable)
-export GITHUB_TOKEN="your_personal_access_token_here"
+# Set your GitHub Personal Access Token as an environment variable
+# Replace 'your_actual_token_here' with your real token
+export GITHUB_TOKEN='your_actual_token_here'
 
 # Delete a repository using GitHub API
 curl -X DELETE \
