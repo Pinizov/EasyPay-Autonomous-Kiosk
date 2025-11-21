@@ -39,7 +39,7 @@ This guide explains how to manage GitHub repositories, including how to delete t
 
 5. **Confirm Deletion**
    - Type the full repository name in the format: `USERNAME/REPOSITORY-NAME`
-   - Example: `Pinizov/EasyPay-Autonomous-Kiosk`
+   - Example: `username/my-repository`
    - Click **"I understand the consequences, delete this repository"**
 
 6. **Authenticate** (if prompted)
@@ -231,11 +231,12 @@ done
 
 ## Need Help?
 
-If you have questions about managing this specific repository (EasyPay-Autonomous-Kiosk), please:
-1. Check the main [README.md](README.md)
-2. Review [PRODUCTION.md](PRODUCTION.md) for deployment guidance
-3. See [TESTING.md](TESTING.md) for testing information
+If you have questions about managing this repository, please:
+1. Check the main [README.md](README.md) for project information
+2. Review [PRODUCTION.md](PRODUCTION.md) for deployment guidance (if available)
+3. See [TESTING.md](TESTING.md) for testing information (if available)
 4. Open an issue in the repository for specific questions
+5. Contact [GitHub Support](https://support.github.com/) for account-related issues
 
 ---
 
