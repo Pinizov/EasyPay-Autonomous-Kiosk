@@ -63,12 +63,17 @@ gh repo delete USERNAME/REPOSITORY-NAME --yes
 Using curl or any HTTP client:
 
 ```bash
+# Set token securely (recommended: use environment variable)
+export GITHUB_TOKEN="your_personal_access_token_here"
+
 # Delete a repository using GitHub API
 curl -X DELETE \
   -H "Accept: application/vnd.github+json" \
-  -H "Authorization: Bearer YOUR_GITHUB_TOKEN" \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
   https://api.github.com/repos/USERNAME/REPOSITORY-NAME
 ```
+
+⚠️ **Security Note**: Never hardcode your GitHub token in scripts. Use environment variables or secure credential management tools. Keep your tokens secret and rotate them regularly.
 
 ---
 
@@ -196,11 +201,25 @@ If recovery is successful, you'll get back:
 ### Q: Can I delete multiple repositories at once?
 **A**: Not through the web interface. You can use GitHub CLI or API to script bulk deletions:
 ```bash
-# Example: Delete multiple repos (be very careful!)
-for repo in repo1 repo2 repo3; do
-  gh repo delete USERNAME/$repo --yes
+# Example: Delete multiple repos with safety checks
+# WARNING: This is dangerous! Use with extreme caution!
+
+# List of repositories to delete
+repos=("repo1" "repo2" "repo3")
+
+for repo in "${repos[@]}"; do
+  echo "About to delete: USERNAME/$repo"
+  read -p "Are you sure? (type 'DELETE' to confirm): " confirmation
+  if [ "$confirmation" = "DELETE" ]; then
+    gh repo delete "USERNAME/$repo" --yes
+    echo "✓ Deleted USERNAME/$repo"
+  else
+    echo "✗ Skipped USERNAME/$repo"
+  fi
 done
 ```
+
+⚠️ **Warning**: Always test bulk deletion scripts on dummy repositories first!
 
 ### Q: Does deleting a repository delete associated Docker images?
 **A**: No, if you've pushed Docker images to Docker Hub or GitHub Container Registry, you need to delete them separately.
@@ -233,8 +252,8 @@ done
 
 If you have questions about managing this repository, please:
 1. Check the main [README.md](README.md) for project information
-2. Review [PRODUCTION.md](PRODUCTION.md) for deployment guidance (if available)
-3. See [TESTING.md](TESTING.md) for testing information (if available)
+2. Review [PRODUCTION.md](PRODUCTION.md) for deployment guidance
+3. See [TESTING.md](TESTING.md) for testing information
 4. Open an issue in the repository for specific questions
 5. Contact [GitHub Support](https://support.github.com/) for account-related issues
 
